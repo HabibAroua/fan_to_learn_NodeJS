@@ -8,22 +8,31 @@ const db=mysql.createConnection
     {
         host: 'localhost',
         user: 'root',
-        password:'',
-        database:'myDb'
-
+        password:''
     }
 );
 
 //Connect
-db.connect((err)
+db.connect((err)=>
 {
     if(err)
     {
         throw err;
     }
     console.log('MySql connected ...');
-}
+});
 const app=express();
+
+//Create database
+app.get('/createdb',(req,res)=>
+{
+    let sql='CREATE DATABASE nodemysql';
+    db.query(sql,(err,result)=>
+    {
+        if(err) throw err;
+        console.log('Database created ...');
+    });
+});
 
 app.listen('3000',()=>
     {
