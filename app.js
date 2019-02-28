@@ -13,6 +13,16 @@ const db=mysql.createConnection
 
     }
 );
+
+//Connect
+db.connect((err)
+{
+    if(err)
+    {
+        throw err;
+    }
+    console.log('MySql connected ...');
+}
 const app=express();
 
 app.listen('3000',()=>
