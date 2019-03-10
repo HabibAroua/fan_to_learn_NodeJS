@@ -60,6 +60,17 @@ app.get('/addPost',(req,res)=>
    });
 });
 
+//select post
+app.get('/getPosts',(req,res)=>
+{
+    let sql='SELECT * FROM post';
+    let query=db.query(sql,(err,results)=>
+    {
+        console.log(results);
+        res.send(results);
+    });
+});
+
 app.listen('3000',()=>
     {
         console.log('Server started on port 3000');
