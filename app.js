@@ -24,6 +24,11 @@ db.connect((err)=>
 });
 const app=express();
 
+//officiel page
+app.get('/',(req,res)=>
+{
+    res.send('Hello world ..');
+})
 //Create database
 app.get('/createdb',(req,res)=>
 {
