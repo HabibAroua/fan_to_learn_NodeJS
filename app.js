@@ -47,6 +47,19 @@ app.get('/createpoststable' , (req,res)=>
     });
 });
 
+//insert a post
+app.get('/addPost',(req,res)=>
+{
+   let post={title :'The Post' , body: 'This is a post'};
+   let sql='INSERT INTO post SET ?';
+   let query=db.query(sql,post,(err,result)=>
+   {
+      if(err)throw err;
+       res.send('This post added ....');
+      console.log('This post added ...');
+   });
+});
+
 app.listen('3000',()=>
     {
         console.log('Server started on port 3000');
