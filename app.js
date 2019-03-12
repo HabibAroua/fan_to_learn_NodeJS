@@ -1,5 +1,7 @@
 const express = require('express');
 const mysql=require('mysql');
+const path=require('path');
+
 
 //create connection
 
@@ -24,11 +26,7 @@ db.connect((err)=>
 });
 const app=express();
 
-//officiel page
-app.get('/',(req,res)=>
-{
-    res.send('Hello world ..');
-})
+
 //Create database
 app.get('/createdb',(req,res)=>
 {
@@ -111,6 +109,10 @@ app.get('/delete/:id',(req,res)=>
       console.log(result);
       res.send('Post deleted ...');
    });
+});
+
+app.get('/',function(req,res) {
+    res.sendFile('index.html', { root: __dirname });
 });
 
 app.listen('3000',()=>
