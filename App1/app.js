@@ -24,9 +24,12 @@ db.connect((err)=>
     }
     console.log('MySql connected ...');
 });
+//*******************************
 const app=express();
-
-
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+//*****************************we should add this instruction we should use the command npm i cors
 //Create database
 app.get('/createdb',(req,res)=>
 {
@@ -53,7 +56,7 @@ app.get('/createpoststable' , (req,res)=>
 //insert a post
 app.get('/addPost',(req,res)=>
 {
-   let post={title :'The Post' , body: 'This is a post'};
+   let post={title :'The Post 11' , body: 'This is a post of Habib Aroua'};
    let sql='INSERT INTO post SET ?';
    let query=db.query(sql,post,(err,result)=>
    {
@@ -115,7 +118,7 @@ app.get('/',function(req,res) {
     res.sendFile('index.html', { root: __dirname });
 });
 
-app.listen('3000',()=>
+app.listen('5000',()=>
 {
-    console.log('Server started on port 3000');
+    console.log('Server started on port 5000');
 });
