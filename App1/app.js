@@ -29,6 +29,7 @@ const app=express();
 const cors = require('cors');
 app.use(cors());
 app.options('*', cors());
+app.use(express.json());
 //*****************************we should add this instruction we should use the command npm i cors
 //Create database
 app.get('/createdb',(req,res)=>
@@ -39,6 +40,15 @@ app.get('/createdb',(req,res)=>
         if(err) throw err;
         console.log('Database created ...');
     });
+});
+
+app.post('/test',(req,res)=>
+{
+    console.log('GOT A REQUEST from the front-end');
+    //console.log(user);
+    console.log('The email is '+req.body.email);
+    res.send("Good");
+    res.end('Success');
 });
 
 //Create table
@@ -113,6 +123,7 @@ app.get('/delete/:id',(req,res)=>
       res.send('Post deleted ...');
    });
 });
+
 
 app.get('/',function(req,res) {
     res.sendFile('index.html', { root: __dirname });
