@@ -12,7 +12,7 @@ process.env.SECRET_KEY='secret'
 
 users.post('/register',(req,res)=>
 {
-    res.send("hhhh")
+    res
     const today=new Date()
     const userData =
         {
@@ -47,5 +47,36 @@ users.post('/register',(req,res)=>
                 res.send('error: '+err)
             })
 })
-
+useers.post('/login',(req,res)=>
+{
+    User.findOne(
+        {
+            where:
+                {
+                    email: req.body.email
+                }
+        })
+        .then(user=>
+        {
+            if(user)
+            {
+                if(bcrypt.compareSync(req.body.password))
+                {
+                    let token = jwt.sign(user.dataValues,process.env.SERCRET_KEY , {
+                        expiresIn: 1440
+                    })
+                    res.send(token)
+                }
+                else
+                {
+                    res.status(400).json({error: 'User does not exist'})
+                }
+            }
+        })
+        .catch(err=>
+        {
+            res.status(400).json({error: err})
+        })
+    )
+})
 module.exports =users
