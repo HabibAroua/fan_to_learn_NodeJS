@@ -12,11 +12,10 @@ process.env.SECRET_KEY='secret'
 
 users.post('/register',(req,res)=>
 {
-    res
     const today=new Date()
     const userData =
         {
-            fisrt_name:req.body.first_name,
+            first_name:req.body.first_name,
             last_name:req.body.last_name,
             email:req.body.email,
             password:req.body.password,
@@ -47,7 +46,8 @@ users.post('/register',(req,res)=>
                 res.send('error: '+err)
             })
 })
-useers.post('/login',(req,res)=>
+
+users.post('/login',(req,res)=>
 {
     User.findOne(
         {
@@ -60,9 +60,9 @@ useers.post('/login',(req,res)=>
         {
             if(user)
             {
-                if(bcrypt.compareSync(req.body.password))
+                if(bcrypt.compareSync(req.body.password,user.password))
                 {
-                    let token = jwt.sign(user.dataValues,process.env.SERCRET_KEY , {
+                    let token = jwt.sign(user.dataValues,process.env.SECRET_KEY , {
                         expiresIn: 1440
                     })
                     res.send(token)
@@ -77,6 +77,5 @@ useers.post('/login',(req,res)=>
         {
             res.status(400).json({error: err})
         })
-    )
 })
 module.exports =users
