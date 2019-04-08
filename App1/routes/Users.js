@@ -62,14 +62,18 @@ users.post('/login',(req,res)=>
             {
                 if(bcrypt.compareSync(req.body.password,user.password))
                 {
+                    console.log("password is correct inst 1");
                     let token = jwt.sign(user.dataValues,process.env.SECRET_KEY , {
                         expiresIn: 1440
                     })
-                    res.send(token)
+                    console.log("password is correct inst 2");
+                    //res.send(token)
+                    res.send("Email and password are correct");
                 }
                 else
                 {
                     res.status(400).json({error: 'User does not exist'})
+                    console.log("password is not correct")
                 }
             }
         })
