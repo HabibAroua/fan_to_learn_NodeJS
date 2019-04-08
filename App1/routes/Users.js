@@ -10,6 +10,10 @@ users.use(cors())
 
 process.env.SECRET_KEY='secret'
 
+users.get('/test',(req,res)=>
+{
+    res.send("This test page");
+})
 users.post('/register',(req,res)=>
 {
     const today=new Date()
