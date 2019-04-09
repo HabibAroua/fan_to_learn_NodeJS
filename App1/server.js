@@ -16,6 +16,7 @@ app.get('/helo',(res,req)=>
 {
    req.send("Hello world")
 });
-app.listen(port,() =>{
+app.listen(port,() =>
+{
     console.log("Server is running on port: "+port);
 });
