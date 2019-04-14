@@ -38,19 +38,27 @@ export class MyMap extends  React.Component
                         position={{lat: 72.778519, lng: 57.405640}} />
                     <Marker
                         title={'The marker`s title wvxvxvx'}
-
                         name={'Your position'}
                         position={{lat: 37.762391, lng: -122.439192}}
-                        icon={{
-                            url: "/path/to/custom_icon.png",
-                            anchor: new window.google.maps.Point(32,32),
-                            scaledSize: new window.google.maps.Size(64,64)
-                        }} />
+                        icon=
+                            {
+                                {
+                                    url: "/path/to/custom_icon.png",
+                                    anchor: new window.google.maps.Point(32,32),
+                                    scaledSize: new window.google.maps.Size(64,64)
+                                }
+                            }
+                    />
                 </Map>
             </div>
         )
     }
 }
-export default GoogleApiWrapper({
-    apiKey: ("AIzaSyBSsKUzYG_Wz7u2qL6unHqfBOmvaZ0H1Mg&callback")
-})(MyMap)
+export default GoogleApiWrapper
+(
+    {
+        apiKey: ("AIzaSyBSsKUzYG_Wz7u2qL6unHqfBOmvaZ0H1Mg&callback")
+
+    }
+)
+(MyMap)
