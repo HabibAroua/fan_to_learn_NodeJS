@@ -22,7 +22,7 @@ export class MyMap extends  React.Component
                 <Map google={this.props.google}
 
                      className={'map'}
-                     zoom={10}>
+                     zoom={5}>
                     <Marker
                         title={'The marker`s title will appear as a tooltip.'}
                         name={'SOMA'}
@@ -32,6 +32,10 @@ export class MyMap extends  React.Component
                         name={'Dolores park'}
                         position={{lat: 37.759703, lng: -122.428093}} />
                     <Marker />
+                    <Marker
+                        title={'This is Tunisia'}
+                        name={'Tunisia'}
+                        position={{lat: 72.778519, lng: 57.405640}} />
                     <Marker
                         title={'The marker`s title wvxvxvx'}
 
