@@ -24,6 +24,11 @@ class Navbar extends Component
                         Register
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/map" className="nav-link">
+                        Map
+                    </Link>
+                </li>
             </ul>
         )
         const userLink = (
@@ -53,13 +58,15 @@ class Navbar extends Component
                     <span className="navbar-toggle-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
-                    <ul className="navbar-nav">
-                        <li className="navbar-nav">
-                            <Link to="/" className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-                    </ul>
+                    <div>
+                        <ul className="navbar-nav">
+                            <li className="navbar-nav">
+                                <Link to="/" className="nav-link">
+                                    Home
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                     {localStorage.usertoken ? userLink: loginRegLink}
                 </div>
             </nav>

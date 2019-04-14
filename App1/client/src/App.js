@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router , Route} from "react-router-dom";
 
+import Navbar from './components/Navbar';
+import Landing from './components/Landing';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Register from './components/Register';
+import Map from './components/MyMap';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+     <Router>
+       <div className="App">
+         <Navbar/>
+         <Route exact path="/" component={Landing} />
+         <div>
+           <Route exact path="/register" component={Register} />
+           <Route exact path="/login" component={Login} />
+           <Route exact path="/profile" component={Profile} />
+           <Route exact path="/map" component={Map} />
+
+         </div>
+
+       </div>
+     </Router>
+
     );
   }
 }

@@ -71,8 +71,8 @@ users.post('/login',(req,res)=>
                         expiresIn: 1440
                     })
                     console.log("password is correct inst 2");
-                    //res.send(token)
-                    res.send("Email and password are correct");
+                    res.send(token)
+                    //res.send("Email and password are correct");
                 }
                 else
                 {

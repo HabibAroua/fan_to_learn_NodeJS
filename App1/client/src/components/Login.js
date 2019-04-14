@@ -1,9 +1,29 @@
 import React , {Component} from 'react'
-import {login} from './UserFunctions'
+//import { login } from './UserFunctions'
+import axios from "axios";
 
-class Login extends Component {
+
+class Login extends Component
+{
+    login(user)
+    {
+        return axios
+            .post('users/login',{
+                email : user.email,
+                password : user.password
+            })
+            .then(res =>
+            {
+                localStorage.setItem('usertoken',res.data)
+                return res.data
+            })
+            .catch(err =>
+            {
+                console.log("error : "+err)
+            })
+    }
     constructor() {
-        super();
+        super()
         this.state =
             {
                 email: '',
@@ -25,9 +45,22 @@ class Login extends Component {
                 email: this.state.email,
                 password: this.state.password
             }
-        login(user).then(res => {
-            if (res) {
-                this.props.history('\profile')
+
+        this.login(user).then(res => {
+            e.preventDefault();
+            if (res)
+            {
+                console.log("email and password are correct");
+               //this.props.history.push('/profile')
+                alert("email and password are correct");
+                window.location.reload();
+                document.location.href="http://localhost:3000/";
+
+            }
+            else
+            {
+                alert("email and password are not correct")
+                console.log("email and password are not correct");
             }
         })
     }

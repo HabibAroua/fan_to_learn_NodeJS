@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const register=newUser =>
+export let register=newUser =>
 {
     return axios
         .post('users/register',{
@@ -14,10 +14,10 @@ export const register=newUser =>
         })
 }
 
-export const login =user =>
+export let login = user =>
 {
     return axios
-        .post('/users/login',{
+        .post('users/login',{
             email : user.email,
             password : user.password
         })
