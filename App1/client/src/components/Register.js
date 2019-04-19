@@ -15,9 +15,11 @@ class Register extends Component
             })
             .then(res =>{
                 console.log("Registered")
+                alert("Regitred");
             })
     }
-    constructor() {
+    constructor()
+    {
         super();
         this.state =
             {
