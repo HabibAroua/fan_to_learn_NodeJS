@@ -1,41 +1,62 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var express = require("express");
+var app=express();
+var port =process.env.PORT || 5000;
+var mongodb= require('mongodb');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var Users=require('./routes/Users');
 
-var app = express();
+app.use('/users',Users);
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.get('/helo',(res,req)=>
+{
+  req.send("Hello world")
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.get('/thelist',function (req,res)
+{
+  var MongoClient = mongodb.MongoClient;
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  var url='mongodb://localhost:27017/sampsite';
+
+  MongoClient.connect(url,function(err,db)
+  {
+    if(err)
+    {
+      console.log('Unable to connect to the server');
+    }
+    else
+    {
+      console.log('Connection Established');
+    }
+  })
 });
 
-module.exports = app;
+app.listen(port,() =>
+{
+  console.log("Server is running on port: "+port);
+});
+/*
+router.get('/thelist',function (req,res)
+{
+  var MongoClient = mongodb.MongoClient;
+
+  var url='mongodb://localhost:27017/sampsite';
+
+  MongoClient.connect(url,function(err,db)
+  {
+    if(err)
+    {
+      console.log('Unable to connect to the server');
+    }
+    else
+    {
+      console.log('Connection Established');
+    }
+  })
+});
+
+express.listen(3000,() =>
+{
+  console.log("Server is running on port: "+port);
+});
+*/
