@@ -55,6 +55,8 @@ paths:
 #Returns an array of Users
   /users:
     get:
+      tags:
+        - User
       summary: Returns a list of users.
       description: People Who are already registered
       responses:
@@ -74,6 +76,8 @@ paths:
 #Get Request with path id
   /users/{userId}:
     get:
+      tags:
+        - User
       summary: Returns a user by ID.
       description: Returns the Specific User
       parameters:
@@ -119,6 +123,8 @@ paths:
 #Defining Body Reference
   /create:
     post:
+      tags:
+        - User
       summary: Adds a new user
       produces:
         - application/json
