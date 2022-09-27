@@ -21,3 +21,23 @@ paths:
     get:
       summary: Return a String
       description: It is just returning a fake string.
+      responses:
+        200:
+          description: Success
+          schema:
+            type: string
+            example: "A fake string"
+        400:
+          description: User Error
+        500:
+          description: Internal Server Error
+#Return an Object
+  /user:
+    get:
+      summary: This return a single Object
+      description: Returning a object.
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
