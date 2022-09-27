@@ -13,5 +13,11 @@ info:
       description: This is my local server
       -url: "https://xelero.io"
       description: This Ahkili api documentation
-      
+
 schemes: [http,https]
+
+paths:
+  /string:
+    get:
+      summary: Return a String
+      description: It is just returning a fake string.
