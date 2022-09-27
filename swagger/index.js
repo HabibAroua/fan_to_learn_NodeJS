@@ -26,8 +26,9 @@ app.get("/users", (req, res) => {
   res.status(200).send(users);
 });
 
-app.get("/users/:id", (req, res) => {
-  res.status(200).send(users.find((x) => x.id === parseInt(req.params.id)));
+app.get("/users/:id/:id2", (req, res) => {
+    res.status(200).send(req.params.id2);
+  //res.status(200).send(users.find((x) => x.id === parseInt(req.params.id)));
 });
 
 app.post("/create", (req, res) => {

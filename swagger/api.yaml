@@ -74,7 +74,7 @@ paths:
 
 
 #Get Request with path id
-  /users/{userId}:
+  /users/{userId}/{page}:
     get:
       tags:
         - User
@@ -82,6 +82,9 @@ paths:
       description: Returns the Specific User
       parameters:
         - name: userId
+          in: path
+          required: true
+        - name: page
           in: path
           required: true
           schema:
