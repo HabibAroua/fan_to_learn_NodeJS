@@ -1,10 +1,10 @@
 swagger: "2.0"
 info:
-  title: Youtube API
-  description: This is my company API Documentation
+  title: Ahkili API
+  description: This is project for Xelero
   version: 1.0
   contact:
-    email: syosas@gmail.com
+    email: habib.a@xelero.io
   liscence:
     name: Apache 2.0
     url: "http://www.apache.org/liscences/LIS"
@@ -221,32 +221,44 @@ paths:
         500:
           description: Internal Server Error
 
-#Cokies
-  # /ping:
-  #   get:
-  #     summary: Checks if the server is alive
-  #     parameters:
-  #       - in: cookie
-  #         name: debug
-  #         schema:
-  #           type: integer
-  #           enum: [0, 1]
-  #           default: 0
-  #       - in: cookie
-  #         name: csrftoken
-  #         schema:
-  #           type: string
-
-
-components:
-  schemas:
-    User:
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
+# components:
+#   schemas:
+#     User:
+#       type: object
+#       required:
+#         - name
+#         - id
+#         - age
+#       properties:
+#         id:
+#           type: integer
+#         name:
+#           type: string
+definitions:
+  CatalogItem:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 38
+      title:
+        type: string
+        example: T-shirt
+      image:
+        type: object
+        properties:
+          url:
+            type: string
+          width:
+            type: integer
+          height:
+            type: integer
+        required:
+          - url
+        example:   # <-----
+          url: images/38.png
+          width: 100
+          height: 100
+    required:
+      - id
+      - title
