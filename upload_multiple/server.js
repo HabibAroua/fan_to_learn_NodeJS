@@ -4,8 +4,10 @@ const app = express();
 const hbs = require('express-handlebars');
 const path = require('path');
 
-app.use(express.json());
-
+//app.use(express.json());
+var multer = require('multer');
+var upload = multer();
+app.use(upload.array()); 
 //serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
