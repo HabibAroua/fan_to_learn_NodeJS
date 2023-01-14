@@ -13,7 +13,9 @@ const storage = multer.diskStorage({
 var upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+        console.log("the file type ",file.mimetype);
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.mimetype == "application/pdf" ) 
+        {
             cb(null, true);
         } else {
             cb(null, false);
